@@ -1,0 +1,29 @@
+name: "Continuous Integration"
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+      command:
+        required: true
+        type: string
+
+jobs:
+  run-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Download docker image'
+        uses: actions/download-artifact@v3
+        with:
+          name: php-fpm
+          path: /tmp
+
+      - name: 'Load docker image'
+        run: docker load -i /tmp/php-fpm.tar
+
+      - name: Run ${{ inputs.command }}
+        run: |
+          docker run --rm ${{ inputs.tag }} \
+            sh -c "php ${{ inputs.command }}"
