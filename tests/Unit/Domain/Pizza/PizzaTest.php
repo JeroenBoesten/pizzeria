@@ -21,7 +21,7 @@ class PizzaTest extends TestCase
             ETopping::HOT_N_SPICY
         );
 
-        $this->assertEquals(EBase::CHEESY_CRUST, $pizza->base);
-        $this->assertEquals(ETopping::HOT_N_SPICY, $pizza->topping);
+        $this->assertEquals(EBase::CHEESY_CRUST, $pizza->base());
+        $this->assertEquals(ETopping::HOT_N_SPICY, $pizza->topping());
     }
 }

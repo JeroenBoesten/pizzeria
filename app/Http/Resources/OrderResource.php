@@ -17,10 +17,10 @@ class OrderResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->resource->id,
-            'store_name' => $this->resource->storeName->value,
-            'pizza' => (new PizzaResource($this->resource->pizza))->resolve(),
-            'notification_channel' => $this->resource->notificationChannel->value,
+            'id' => $this->resource->id(),
+            'store_name' => $this->resource->storeName()->value,
+            'pizza' => (new PizzaResource($this->resource->pizza()))->resolve(),
+            'notification_channel' => $this->resource->notificationChannel()->value,
             'status' => $this->resource->status()->value,
         ];
     }

@@ -7,7 +7,17 @@ class Pizza
     private ?int $id;
 
     public function __construct(
-        public EBase $base,
-        public ETopping $topping
+        private EBase $base,
+        private ETopping $topping
     ) {}
+
+    public function base(): EBase
+    {
+        return $this->base;
+    }
+
+    public function topping(): ETopping
+    {
+        return $this->topping;
+    }
 }

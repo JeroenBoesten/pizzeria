@@ -32,10 +32,10 @@ class PlaceOrderServiceTest extends TestCase
         $repository = $this->createMock(IOrderRepository::class);
         $repository->expects($this->once())->method('save')->with($this->callback(
             function (Order $order) {
-                $this->assertEquals(EBase::CLASSIC, $order->pizza->base);
-                $this->assertEquals(ETopping::HOT_N_SPICY, $order->pizza->topping);
-                $this->assertEquals(EStoreName::NEW_YORK_PIZZA, $order->storeName);
-                $this->assertEquals(EOrderNotificationChannelName::SMS, $order->notificationChannel);
+                $this->assertEquals(EBase::CLASSIC, $order->pizza()->base());
+                $this->assertEquals(ETopping::HOT_N_SPICY, $order->pizza()->topping());
+                $this->assertEquals(EStoreName::NEW_YORK_PIZZA, $order->storeName());
+                $this->assertEquals(EOrderNotificationChannelName::SMS, $order->notificationChannel());
 
                 return true;
             }
