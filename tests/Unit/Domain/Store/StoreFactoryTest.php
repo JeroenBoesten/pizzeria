@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Store;
+namespace Tests\Unit\Domain\Store;
 
 use App\Pizzeria\Domain\Store\Dominos;
 use App\Pizzeria\Domain\Store\EStoreName;
