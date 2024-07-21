@@ -2,8 +2,9 @@
 
 namespace App\Pizzeria\Application\Order\Service;
 
-use App\Pizzeria\Application\Order\Dto\OrderDto;
+use App\Pizzeria\Application\Order\Dto\PlaceOrderDto;
 use App\Pizzeria\Domain\Order\IOrderRepository;
+use App\Pizzeria\Domain\Order\Notifications\EOrderNotificationChannelName;
 use App\Pizzeria\Domain\Order\Order;
 use App\Pizzeria\Domain\Pizza\EBase;
 use App\Pizzeria\Domain\Pizza\ETopping;
@@ -19,11 +20,12 @@ readonly class PlaceOrderService
         private StoreFactory $storeFactory
     ) {}
 
-    public function execute(OrderDto $orderDto): void
+    public function execute(PlaceOrderDto $orderDto): void
     {
         Assert::notNull($orderDto->store, 'store');
         Assert::notNull($orderDto->base, 'base');
         Assert::notNull($orderDto->topping, 'topping');
+        Assert::notNull($orderDto->notificationChannel, 'notification_channel');
 
         $store = $this->storeFactory->create(EStoreName::from($orderDto->store));
 
@@ -32,7 +34,8 @@ readonly class PlaceOrderService
             new Pizza(
                 EBase::from($orderDto->base),
                 ETopping::from($orderDto->topping)
-            )
+            ),
+            EOrderNotificationChannelName::from($orderDto->notificationChannel)
         );
 
         $this->orderRepository->save($order);

@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Domain\Order;
 
+use App\Pizzeria\Domain\Order\Notifications\EOrderNotificationChannelName;
 use App\Pizzeria\Domain\Order\Order;
 use App\Pizzeria\Domain\Pizza\Pizza;
 use App\Pizzeria\Domain\Store\EStoreName;
@@ -23,11 +24,13 @@ class OrderTest extends TestCase
 
         $order = new Order(
             $store,
-            $pizza
+            $pizza,
+            EOrderNotificationChannelName::EMAIL
         );
 
         $this->assertNull($order->id);
         $this->assertEquals(EStoreName::NEW_YORK_PIZZA, $order->storeName);
+        $this->assertEquals(EOrderNotificationChannelName::EMAIL, $order->notificationChannel);
         $this->assertEquals($pizza, $order->pizza);
     }
 }

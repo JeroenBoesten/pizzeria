@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Infrastructure\Doctrine\Repositories;
 
+use App\Pizzeria\Domain\Order\Notifications\EOrderNotificationChannelName;
 use App\Pizzeria\Domain\Order\Order;
 use App\Pizzeria\Domain\Pizza\EBase;
 use App\Pizzeria\Domain\Pizza\ETopping;
@@ -41,13 +42,15 @@ class OrderRepositoryTest extends TestCase
             new Pizza(
                 EBase::CHEESY_CRUST,
                 ETopping::HOT_N_SPICY
-            )
+            ),
+            EOrderNotificationChannelName::SMS
         );
 
         $this->repository->save($order);
         $this->assertIsInt($order->id);
         $this->assertCount(1, $this->repository->findAll());
-        $this->assertCount(1, $this->repository->findAllForStore(EStoreName::DOMINOS));
-        $this->assertCount(0, $this->repository->findAllForStore(EStoreName::NEW_YORK_PIZZA));
+        $this->assertCount(1, $this->repository->findAllForStore(EStoreName::NEW_YORK_PIZZA));
+        $this->assertCount(0, $this->repository->findAllForStore(EStoreName::DOMINOS));
+        $this->assertInstanceOf(Order::class, $this->repository->findByIdAndStore($order->id, EStoreName::NEW_YORK_PIZZA));
     }
 }

@@ -6,6 +6,8 @@ use App\Pizzeria\Domain\Store\EStoreName;
 
 interface IOrderRepository
 {
+    public function findByIdAndStore(int $orderId, EStoreName $store): Order;
+
     /** @return list<Order> */
     public function findAll(): array;
 

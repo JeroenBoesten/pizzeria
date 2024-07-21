@@ -2,15 +2,15 @@
 
 namespace App\Pizzeria\Application\Order\Dto\Mapper;
 
-use App\Http\Requests\OrderRequest;
-use App\Pizzeria\Application\Order\Dto\OrderDto;
+use App\Http\Requests\PlaceOrderRequest;
+use App\Pizzeria\Application\Order\Dto\PlaceOrderDto;
 use App\Pizzeria\Domain\Utils\Assert;
 
-class OrderRequestDtoMapper
+class PlaceOrderRequestDtoMapper
 {
-    public function map(OrderRequest $request): OrderDto
+    public function map(PlaceOrderRequest $request): PlaceOrderDto
     {
-        $dto = new OrderDto();
+        $dto = new PlaceOrderDto();
 
         Assert::isStringOrNull($request->validated('store'), 'store');
         $dto->store = $request->validated('store');
@@ -20,6 +20,9 @@ class OrderRequestDtoMapper
 
         Assert::isStringOrNull($request->validated('topping'), 'topping');
         $dto->topping = $request->validated('topping');
+
+        Assert::isStringOrNull($request->validated('notification_channel'), 'notification_channel');
+        $dto->notificationChannel = $request->validated('notification_channel');
 
         return $dto;
     }

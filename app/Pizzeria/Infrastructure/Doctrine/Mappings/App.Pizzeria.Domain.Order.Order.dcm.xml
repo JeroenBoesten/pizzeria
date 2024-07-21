@@ -7,12 +7,14 @@
         <id name="id" type="integer">
             <generator strategy="AUTO" />
         </id>
+        <field name="status" enum-type="App\Pizzeria\Domain\Order\EOrderStatus"/>
+        <field name="storeName" enum-type="App\Pizzeria\Domain\Store\EStoreName"/>
+        <field name="notificationChannel" enum-type="App\Pizzeria\Domain\Order\Notifications\EOrderNotificationChannelName"/>
         <one-to-one field="pizza" target-entity="App\Pizzeria\Domain\Pizza\Pizza" orphan-removal="true">
             <join-column name="pizza_id" on-delete="RESTRICT" />
             <cascade>
                 <cascade-all/>
             </cascade>
         </one-to-one>
-        <field name="storeName" enum-type="App\Pizzeria\Domain\Store\EStoreName"/>
     </entity>
 </doctrine-mapping>

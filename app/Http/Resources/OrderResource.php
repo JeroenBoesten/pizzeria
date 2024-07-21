@@ -20,6 +20,8 @@ class OrderResource extends JsonResource
             'id' => $this->resource->id,
             'store_name' => $this->resource->storeName->value,
             'pizza' => (new PizzaResource($this->resource->pizza))->resolve(),
+            'notification_channel' => $this->resource->notificationChannel->value,
+            'status' => $this->resource->status()->value,
         ];
     }
 }
