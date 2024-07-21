@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Infrastructure\Doctrine\Repositories;
 
+use App\Pizzeria\Domain\Order\Notifications\EOrderNotificationChannelName;
 use App\Pizzeria\Domain\Order\Order;
 use App\Pizzeria\Domain\Pizza\EBase;
 use App\Pizzeria\Domain\Pizza\ETopping;
@@ -41,7 +42,8 @@ class OrderRepositoryTest extends TestCase
             new Pizza(
                 EBase::CHEESY_CRUST,
                 ETopping::HOT_N_SPICY
-            )
+            ),
+            EOrderNotificationChannelName::SMS
         );
 
         $this->repository->save($order);

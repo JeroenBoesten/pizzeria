@@ -27,4 +27,18 @@ class Assert
             throw new InvalidArgumentException("Property `{$property}` must be a string");
         }
     }
+
+    /**
+     * @phpstan-template T
+     *
+     * @param class-string<T> $class
+     *
+     * @phpstan-assert T $value
+     */
+    public static function instanceOf(mixed $value, string $class, string $property): void
+    {
+        if (!$value instanceof $class) {
+            throw new InvalidArgumentException("Property `{$property}` must be an instance of `{$class}`");
+        }
+    }
 }

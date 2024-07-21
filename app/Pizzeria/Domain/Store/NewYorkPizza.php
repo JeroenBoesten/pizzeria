@@ -6,6 +6,6 @@ class NewYorkPizza implements IStore
 {
     public function name(): EStoreName
     {
-        return EStoreName::DOMINOS;
+        return EStoreName::NEW_YORK_PIZZA;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Application\Service;
 
-use App\Pizzeria\Application\Order\Dto\OrderDto;
+use App\Pizzeria\Application\Order\Dto\PlaceOrderDto;
 use App\Pizzeria\Application\Order\Service\PlaceOrderService;
 use App\Pizzeria\Domain\Order\IOrderRepository;
 use App\Pizzeria\Domain\Order\Order;
@@ -22,7 +22,7 @@ class PlaceOrderServiceTest extends TestCase
     #[Test]
     public function can_place_order(): void
     {
-        $orderDto = new OrderDto();
+        $orderDto = new PlaceOrderDto();
         $orderDto->store = 'new_york_pizza';
         $orderDto->base = 'classic';
         $orderDto->topping = 'hot_n_spicy';

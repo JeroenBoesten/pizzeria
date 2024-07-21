@@ -2,11 +2,13 @@
 
 namespace App\Pizzeria\Application\Order\Dto;
 
-class OrderDto
+class PlaceOrderDto
 {
     public ?string $store = null;
 
     public ?string $base = null;
 
     public ?string $topping = null;
+
+    public ?string $notificationChannel = null;
 }

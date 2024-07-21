@@ -46,13 +46,15 @@
         <td>{{ $order['pizza']['base'] }}</td>
         <td>{{ $order['pizza']['topping'] }}</td>
         <td>
-            <form>
-                <select title="status">
-                    <option>Bestelling ontvangen</option>
-                    <option>Pizza voorbereid</option>
-                    <option>In de oven</option>
-                    <option>Bezorger onderweg</option>
-                    <option>Afgeleverd</option>
+            <form method="POST" action="{{ route('store.updateOrder', ['store' => $storeName, 'orderId' => $order['id']]) }}">
+                @csrf
+                @method('PATCH')
+                <select name="status" title="status">
+                    <option value="received" @if($order['status'] === 'received') selected @endif>Bestelling ontvangen</option>
+                    <option value="preparing" @if($order['status'] === 'preparing') selected @endif>Pizza voorbereid</option>
+                    <option value="in_oven" @if($order['status'] === 'in_oven') selected @endif>In de oven</option>
+                    <option value="in_delivery" @if($order['status'] === 'in_delivery') selected @endif>Bezorger onderweg</option>
+                    <option value="delivered" @if($order['status'] === 'delivered') selected @endif>Afgeleverd</option>
                 </select>
                 <button type="submit">Wijzig status</button>
             </form>

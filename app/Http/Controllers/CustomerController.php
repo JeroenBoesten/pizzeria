@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\OrderRequest;
+use App\Http\Requests\PlaceOrderRequest;
 use App\Http\Resources\OrderResource;
-use App\Pizzeria\Application\Order\Dto\Mapper\OrderRequestDtoMapper;
+use App\Pizzeria\Application\Order\Dto\Mapper\PlaceOrderRequestDtoMapper;
 use App\Pizzeria\Application\Order\Service\PlaceOrderService;
 use App\Pizzeria\Domain\Order\IOrderRepository;
 use Illuminate\Contracts\View\View;
@@ -19,10 +19,10 @@ class CustomerController
         ]);
     }
 
-    public function placeOrder(OrderRequest $request, PlaceOrderService $service): RedirectResponse
+    public function placeOrder(PlaceOrderRequest $request, PlaceOrderService $service): RedirectResponse
     {
         $service->execute(
-            (new OrderRequestDtoMapper())->map($request)
+            (new PlaceOrderRequestDtoMapper())->map($request)
         );
 
         return redirect()->route('customer.index');

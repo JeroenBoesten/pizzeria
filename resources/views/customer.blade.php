@@ -63,6 +63,17 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
+
+    <div>
+        <label for="notification_channel">Order updates: </label>
+        <select name="notification_channel" id="notification_channel">
+            <option value="email">Email</option>
+            <option value="sms">Sms</option>
+        </select>
+        @error('notification_channel')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
     <button type="submit">Plaats bestelling &raquo;</button>
 </form>
 
@@ -73,6 +84,7 @@
     <tr>
         <th>Pizzeria</th>
         <th>Pizza</th>
+        <th>Updates</th>
         <th>Status</th>
     </tr>
     </thead>
@@ -81,7 +93,8 @@
     <tr>
         <td>{{ $order['store_name'] }}</td>
         <td>{{ $order['pizza']['base'] }} / {{ $order['pizza']['topping'] }}</td>
-        <td>-</td>
+        <td>{{ $order['notification_channel'] }}</td>
+        <td>{{ $order['status'] }}</td>
     </tr>
     @endforeach
     </tbody>
