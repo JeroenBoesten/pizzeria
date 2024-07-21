@@ -17,8 +17,8 @@ class PizzaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'base' => $this->resource->base->value,
-            'topping' => $this->resource->topping->value,
+            'base' => $this->resource->base()->value,
+            'topping' => $this->resource->topping()->value,
         ];
     }
 }

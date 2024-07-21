@@ -10,16 +10,16 @@ use App\Pizzeria\Domain\Store\IStore;
 
 class Order
 {
-    public ?int $id = null;
+    private ?int $id = null;
 
-    public EStoreName $storeName;
+    private EStoreName $storeName;
 
     private EOrderStatus $status = EOrderStatus::RECEIVED;
 
     public function __construct(
         IStore $store,
-        public Pizza $pizza,
-        public EOrderNotificationChannelName $notificationChannel
+        private Pizza $pizza,
+        private EOrderNotificationChannelName $notificationChannel
     ) {
         $this->storeName = $store->name();
     }
@@ -34,5 +34,25 @@ class Order
     public function status(): EOrderStatus
     {
         return $this->status;
+    }
+
+    public function id(): ?int
+    {
+        return $this->id;
+    }
+
+    public function storeName(): EStoreName
+    {
+        return $this->storeName;
+    }
+
+    public function pizza(): Pizza
+    {
+        return $this->pizza;
+    }
+
+    public function notificationChannel(): EOrderNotificationChannelName
+    {
+        return $this->notificationChannel;
     }
 }

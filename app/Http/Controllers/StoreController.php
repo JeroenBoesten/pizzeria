@@ -28,7 +28,6 @@ class StoreController
 
         return redirect()->route('store.index', [
             'store' => $dto->store,
-            'orderId' => $dto->id,
         ]);
     }
 }
