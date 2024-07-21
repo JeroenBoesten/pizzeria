@@ -12,6 +12,7 @@ class StoreController
     public function index(EStoreName $store, IOrderRepository $orderRepository): View
     {
         return view('store')->with([
+            'storeName' => $store->value,
             'orders' => OrderResource::collection($orderRepository->findAllForStore($store))->resolve(),
         ]);
     }

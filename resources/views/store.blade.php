@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
     <meta charset="utf-8">
-    <title>Pizzeria ...</title>
+    <title>Pizzeria {{ $storeName }}</title>
     <style>
         html {
             padding: 1em;
