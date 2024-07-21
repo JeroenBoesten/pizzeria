@@ -5,6 +5,7 @@ namespace Tests\Unit\Application\Service;
 use App\Pizzeria\Application\Order\Dto\PlaceOrderDto;
 use App\Pizzeria\Application\Order\Service\PlaceOrderService;
 use App\Pizzeria\Domain\Order\IOrderRepository;
+use App\Pizzeria\Domain\Order\Notifications\EOrderNotificationChannelName;
 use App\Pizzeria\Domain\Order\Order;
 use App\Pizzeria\Domain\Pizza\EBase;
 use App\Pizzeria\Domain\Pizza\ETopping;
@@ -26,6 +27,7 @@ class PlaceOrderServiceTest extends TestCase
         $orderDto->store = 'new_york_pizza';
         $orderDto->base = 'classic';
         $orderDto->topping = 'hot_n_spicy';
+        $orderDto->notificationChannel = 'sms';
 
         $repository = $this->createMock(IOrderRepository::class);
         $repository->expects($this->once())->method('save')->with($this->callback(
@@ -33,6 +35,7 @@ class PlaceOrderServiceTest extends TestCase
                 $this->assertEquals(EBase::CLASSIC, $order->pizza->base);
                 $this->assertEquals(ETopping::HOT_N_SPICY, $order->pizza->topping);
                 $this->assertEquals(EStoreName::NEW_YORK_PIZZA, $order->storeName);
+                $this->assertEquals(EOrderNotificationChannelName::SMS, $order->notificationChannel);
 
                 return true;
             }

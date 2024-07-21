@@ -49,7 +49,8 @@ class OrderRepositoryTest extends TestCase
         $this->repository->save($order);
         $this->assertIsInt($order->id);
         $this->assertCount(1, $this->repository->findAll());
-        $this->assertCount(1, $this->repository->findAllForStore(EStoreName::DOMINOS));
-        $this->assertCount(0, $this->repository->findAllForStore(EStoreName::NEW_YORK_PIZZA));
+        $this->assertCount(1, $this->repository->findAllForStore(EStoreName::NEW_YORK_PIZZA));
+        $this->assertCount(0, $this->repository->findAllForStore(EStoreName::DOMINOS));
+        $this->assertInstanceOf(Order::class, $this->repository->findByIdAndStore($order->id, EStoreName::NEW_YORK_PIZZA));
     }
 }
