@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Service;
+namespace Tests\Unit\Application\Service;
 
 use App\Pizzeria\Application\Order\Dto\OrderDto;
 use App\Pizzeria\Application\Order\Service\PlaceOrderService;

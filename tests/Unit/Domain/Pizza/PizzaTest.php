@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Pizza;
+namespace Tests\Unit\Domain\Pizza;
 
 use App\Pizzeria\Domain\Pizza\EBase;
 use App\Pizzeria\Domain\Pizza\ETopping;

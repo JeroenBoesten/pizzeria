@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Order;
+namespace Tests\Unit\Domain\Order;
 
 use App\Pizzeria\Domain\Order\Order;
 use App\Pizzeria\Domain\Pizza\Pizza;

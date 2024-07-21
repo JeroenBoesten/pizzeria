@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Pizzeria\Infrastructure\Order;
+namespace App\Pizzeria\Infrastructure\Doctrine\Repositories;
 
 use App\Pizzeria\Domain\Order\IOrderRepository;
 use App\Pizzeria\Domain\Order\Order;
+use App\Pizzeria\Domain\Store\EStoreName;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
@@ -26,5 +27,12 @@ class OrderRepository implements IOrderRepository
     {
         $this->em->persist($order);
         $this->em->flush();
+    }
+
+    public function findAllForStore(EStoreName $storeName): array
+    {
+        return $this->entityRepository->findBy([
+            'storeName' => $storeName,
+        ]);
     }
 }

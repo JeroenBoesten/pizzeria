@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Pizzeria\Domain\Order\IOrderRepository;
-use App\Pizzeria\Infrastructure\Order\OrderRepository;
+use App\Pizzeria\Infrastructure\Doctrine\Repositories\OrderRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
