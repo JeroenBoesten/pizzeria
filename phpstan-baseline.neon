@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property App\\\\Pizzeria\\\\Domain\\\\Order\\\\Order\\:\\:\\$pizza type mapping mismatch\\: database can contain App\\\\Pizzeria\\\\Domain\\\\Pizza\\\\Pizza\\|null but property expects App\\\\Pizzeria\\\\Domain\\\\Pizza\\\\Pizza\\.$#"
+			count: 1
+			path: app/Pizzeria/Domain/Order/Order.php
