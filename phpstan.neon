@@ -4,3 +4,10 @@ parameters:
         - app/
         - tests/
         - database/
+    doctrine:
+        objectManagerLoader: tests/ObjectManager.php
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-doctrine/rules.neon
+    # Baseline
+    - ./phpstan-baseline.neon
