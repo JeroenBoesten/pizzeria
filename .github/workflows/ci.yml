@@ -33,7 +33,7 @@ jobs:
           outputs: type=docker,dest=/tmp/php-fpm.tar
 
       - name: 'Upload docker image'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: php-fpm
           path: /tmp/php-fpm.tar
